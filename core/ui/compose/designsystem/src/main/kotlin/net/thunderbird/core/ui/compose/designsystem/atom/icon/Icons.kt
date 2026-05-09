@@ -32,6 +32,7 @@ import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.Sync
 import androidx.compose.material.icons.outlined.Visibility
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.material.icons.outlined.AutoAwesome
 import net.thunderbird.core.ui.compose.designsystem.atom.icon.dualtone.DualToneWarningIcon
 import net.thunderbird.core.ui.compose.designsystem.atom.icon.filled.FilledDotIcon
 import net.thunderbird.core.ui.compose.designsystem.atom.icon.filled.FilledStarIcon
@@ -164,6 +165,7 @@ object Icons {
         val Security: ImageVector = Icons.Outlined.Security
         val Send: ImageVector = Icons.AutoMirrored.Outlined.Send
         val Settings: ImageVector = Icons.Outlined.Settings
+        val WandStars: ImageVector = Icons.Outlined.AutoAwesome
         val Smile: ImageVector = OutlinedSmileIcon
         val Spa: ImageVector = OutlinedSpaIcon
         val Star: ImageVector = OutlinedStarIcon

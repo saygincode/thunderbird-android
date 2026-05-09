@@ -32,6 +32,7 @@ class DropDownDrawer(
     private val openManageFolders: () -> Unit,
     private val openSettings: () -> Unit,
     private val openAddAccount: () -> Unit,
+    private val openAsk: () -> Unit,
     createDrawerListener: () -> DrawerLayout.DrawerListener,
 ) : NavigationDrawer, KoinComponent {
 
@@ -62,6 +63,7 @@ class DropDownDrawer(
                     openManageFolders = openManageFolders,
                     openSettings = openSettings,
                     openAddAccount = openAddAccount,
+                    openAsk = openAsk,
                     closeDrawer = { close() },
                 )
             }

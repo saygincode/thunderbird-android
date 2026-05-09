@@ -62,6 +62,10 @@ include(
 )
 
 include(
+    ":feature:ai:chat",
+)
+
+include(
     ":feature:account:api",
     ":feature:account:avatar:api",
     ":feature:account:avatar:impl",
@@ -262,7 +266,10 @@ include(
 include(
     ":library:html-cleaner",
     ":library:token-auto-complete",
+    ":library:llama-android",
 )
+
+project(":library:llama-android").projectDir = file("llama.cpp/examples/llama.android/lib")
 
 include(
     ":quality:konsist",

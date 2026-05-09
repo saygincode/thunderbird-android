@@ -14,6 +14,8 @@ android {
         applicationId = "net.thunderbird.android"
         testApplicationId = "net.thunderbird.android.tests"
 
+        minSdk = 33
+
         versionCode = 4
         versionName = "20.0"
 
@@ -258,6 +260,8 @@ dependencies {
 
     implementation(projects.feature.onboarding.migration.thunderbird)
     implementation(projects.feature.migration.launcher.thunderbird)
+
+    implementation(projects.feature.ai.chat)
 
     // TODO remove once OAuth ids have been moved from TBD to TBA
     releaseImplementation(libs.appauth)

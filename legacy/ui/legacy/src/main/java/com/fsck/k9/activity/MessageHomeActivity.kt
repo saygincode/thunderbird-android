@@ -63,6 +63,7 @@ import net.thunderbird.core.preference.GeneralSettingsManager
 import net.thunderbird.core.preference.SplitViewMode
 import net.thunderbird.core.preference.interaction.PostMarkAsUnreadNavigation
 import net.thunderbird.core.preference.interaction.PostRemoveNavigation
+import net.thunderbird.feature.ai.chat.AiChatActivity
 import net.thunderbird.feature.account.storage.legacy.mapper.LegacyAccountDataMapper
 import net.thunderbird.feature.funding.api.FundingManager
 import net.thunderbird.feature.navigation.drawer.api.NavigationDrawer
@@ -670,6 +671,7 @@ open class MessageHomeActivity :
             openUnifiedFolder = { openUnifiedFolders() },
             openManageFolders = { launchManageFoldersScreen() },
             openSettings = { SettingsActivity.launch(this) },
+            openAsk = { account?.let { AiChatActivity.launch(this, it) } },
             createDrawerListener = { createDrawerListener() },
         )
     }

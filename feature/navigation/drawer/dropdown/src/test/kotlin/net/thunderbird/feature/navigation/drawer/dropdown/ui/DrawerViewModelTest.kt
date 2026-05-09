@@ -428,6 +428,18 @@ internal class DrawerViewModelTest {
     }
 
     @Test
+    fun `should emit OpenAsk effect when OnAskClick event is received`() = runMviTest {
+        val testSubject = createTestSubject()
+        val turbines = turbinesWithInitialStateCheck(testSubject, State())
+
+        testSubject.event(Event.OnAskClick)
+
+        turbines.assertThatAndEffectTurbineConsumed {
+            isEqualTo(Effect.OpenAsk)
+        }
+    }
+
+    @Test
     fun `should emit OpenSettings effect when OnSettingsClick event is received`() = runMviTest {
         val testSubject = createTestSubject()
         val turbines = turbinesWithInitialStateCheck(testSubject, State())

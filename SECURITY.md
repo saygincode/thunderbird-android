@@ -1,5 +1,7 @@
 # Thunderbird for Android Security
 
+Note: The AI-related modifications in this fork were not part of the upstream Thunderbird/K-9 security reviews or CASA assessments.
+
 ## CASA Assessment
 
 The [Cloud Application Security Assessment (CASA)](https://appdefensealliance.dev/casa) is an annual security review

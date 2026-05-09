@@ -1,3 +1,15 @@
+## Experimental AI Proof of Concept
+
+This repository is an experimental fork of Thunderbird for Android exploring on-device LLM integration for querying local email content.
+
+Uses [llama.cpp](https://github.com/ggml-org/llama.cpp) for local inference.
+
+This project does not distribute model weights. Users are responsible for obtaining models and complying with their respective licenses.
+
+This is research/POC code and is not an official Thunderbird project.
+
+<img src="./docs/assets/readme-scr.png">
+
 # Thunderbird for Android
 
 <a href="https://play.google.com/store/apps/details?id=net.thunderbird.android&referrer=utm_campaign%3Dandroid_metadata%26utm_medium%3Dweb%26utm_source%3Dgithub.com%26utm_content%3Dbadge" target="_blank"><img src="./docs/assets/get-it-on-play.png" alt="Get it on Google Play" height="28"></a>
