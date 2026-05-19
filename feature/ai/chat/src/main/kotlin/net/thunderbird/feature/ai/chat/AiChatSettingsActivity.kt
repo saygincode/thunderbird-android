@@ -131,7 +131,7 @@ private fun AiChatSettingsScreen() {
     }
     var resetChatAtEachStepEnabled by remember {
         mutableStateOf(
-            prefs.getBoolean(AiChatPreferences.RESET_CHAT_AT_EACH_STEP_KEY, false),
+            prefs.getBoolean(AiChatPreferences.RESET_CHAT_AT_EACH_STEP_KEY, true),
         )
     }
     var isAdvancedExpanded by remember { mutableStateOf(false) }

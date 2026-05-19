@@ -139,6 +139,18 @@ class AiChatActivity : BaseActivity() {
     }
 }
 
+// Bypasses InferenceEngineImpl's "_readyForSystemPrompt must be true" guard
+private val readyForSystemPromptField by lazy {
+    Class.forName("com.arm.aichat.internal.InferenceEngineImpl")
+        .getDeclaredField("_readyForSystemPrompt")
+        .apply { isAccessible = true }
+}
+
+private suspend fun InferenceEngine.resetChatContext(systemPrompt: String) {
+    readyForSystemPromptField.setBoolean(this, true)
+    setSystemPrompt(systemPrompt)
+}
+
 private data class ChatMessage(
     val text: String,
     val isUser: Boolean,
@@ -246,7 +258,7 @@ private fun AiChatScreen(
                 openSettingsOnDialogConfirm = true
                 return@withLock false
             }
-            
+
             val configuredModelName = prefs.getString(
                 AiChatPreferences.MODEL_PATH_KEY,
                 null,
@@ -372,7 +384,7 @@ private fun AiChatScreen(
                 ),
             )
             postDebugMessage(
-                context.getString(R.string.ai_chat_debug_system_prompt, engine.assignedSystemPrompt),
+                context.getString(R.string.ai_chat_debug_system_prompt, loadedSystemPrompt.orEmpty()),
             )
             postDebugMessage(
                 context.getString(
@@ -384,7 +396,7 @@ private fun AiChatScreen(
 
         try {
             if (resetChatAtEachStepEnabled) {
-                engine.resetChatContext()
+                engine.resetChatContext(systemPrompt!!)
             }
             val keywordResponse = engine.sendUserPrompt(keywordPrompt).toList().joinToString("")
             if (isDebugMode) {
@@ -485,7 +497,7 @@ private fun AiChatScreen(
                 }
                 val startNanos = System.nanoTime()
                 if (resetChatAtEachStepEnabled) {
-                    engine.resetChatContext()
+                    engine.resetChatContext(systemPrompt!!)
                 }
                 val emailAnswer = engine.sendUserPrompt(emailPrompt)
                     .toList()
@@ -533,7 +545,7 @@ private fun AiChatScreen(
             }
 
             if (resetChatAtEachStepEnabled) {
-                engine.resetChatContext()
+                engine.resetChatContext(systemPrompt!!)
             }
             val finalAnswer = engine.sendUserPrompt(finalPrompt)
                 .toList()
