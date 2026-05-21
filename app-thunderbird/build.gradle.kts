@@ -188,6 +188,11 @@ android {
 
     packaging {
         jniLibs {
+            // The llama.cpp GGML_BACKEND_DL build ships the CPU backend as sibling
+            // libggml-cpu-*.so variants that are enumerated and dlopen'd at runtime
+            // from nativeLibraryDir. They must be extracted to disk, so opt out of
+            // the default uncompressed-in-APK packaging.
+            useLegacyPackaging = true
             excludes += listOf("kotlin/**")
         }
 
