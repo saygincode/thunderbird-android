@@ -5,6 +5,10 @@ plugins {
 android {
     namespace = "net.thunderbird.feature.ai.chat"
     resourcePrefix = "ai_chat_"
+
+    defaultConfig {
+        consumerProguardFiles("consumer-rules.pro")
+    }
 }
 
 dependencies {
